@@ -1,7 +1,23 @@
 <div class='container'>
-  <h5> Hi <%= current_user.username %></h5>
-  <h4> Users </h4>
-  <%= render @users %>
-  <h4> Rooms </h4>
-  <%= render @rooms %>
+  <div class='row'>
+    <div class='col-md-2'>
+      <h5> Hi <%= current_user.username %></h5>
+      <h4> Users </h4>
+      <div>
+        <%= turbo_stream_from 'users' %>
+        <div id='users'>
+          <%= render @users %>
+        </div>
+      </div>
+      <h4> Rooms </h4>
+      <div>
+        <%= turbo_stream_from 'rooms' %>
+        <div id='rooms'>
+          <%= render @rooms %>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-10 bg-dark'>
+    </div>
+  </div>
 </div>
