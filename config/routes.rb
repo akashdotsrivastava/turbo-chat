@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
 
-  resources :rooms
+  resources :rooms do
+    resources :messages
+  end
   resources :users
   root 'rooms#index'
 end
